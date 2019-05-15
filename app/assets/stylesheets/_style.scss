@@ -36,13 +36,13 @@
     .left-side-main__group{
       padding-bottom: 40px;
       .left-side-main__group__name{
-        color: #ffffff;
+        color: $white;
         font-size: 15px;
         font-weight: bold;
       }
       .left-side-main__group__comment{
         padding-top: 5px;
-        color: #ffffff;
+        color: $white;
         font-size: 11px;
         font-weight: bold;
       }
@@ -58,7 +58,7 @@
     padding:0 40px;
     // width: 100%;
     height: 100px;
-    background-color: #ffffff;
+    background-color: $white;
     border-bottom: solid 1px #eeeeee;
     .main-content-top-left{
       float:left;
@@ -82,8 +82,8 @@
     .main-content-top-edit{
       float:right;
       margin-top:28px;
-      color: #38AEF0;
-      border: solid 1px #38AEF0;
+      color: $light_blue;
+      border: solid 1px $light_blue;
       height: 40px;
       padding: 0 20px;
       line-height: 40px;
@@ -148,7 +148,7 @@
         height:50px;
         width:100px;
         color:#ffffff;
-        background-color:#38aef0;
+        background-color:$light_blue;
         padding: 0 30px;
         margin-left:15px;
         cursor: pointer;
