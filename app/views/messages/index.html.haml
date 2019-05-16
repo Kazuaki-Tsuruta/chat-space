@@ -1,0 +1,55 @@
+
+
+.left-side 
+  .left-side-top
+    .left-side-top__box
+      %p.left-side-top__box__name name
+      %ul.left-side-top__box__menu
+        %li.left-side-top__box__newgroup 
+          %i.fa.fa-edit
+        %li.left-side-top__box__edituser
+          %i.fa.fa-cog
+  .left-side-main
+    -# 下記は部分テンプレート使用可
+    .left-side-main__group     
+      %p.left-side-main__group__name group11
+      %p.left-side-main__group__comment comment1
+    .left-side-main__group
+      %p.left-side-main__group__name group22
+      %p.left-side-main__group__comment comment2
+    .left-side-main__group
+      %p.left-side-main__group__name group33
+      %p.left-side-main__group__comment comment3
+
+
+.main-content 
+  .main-content-top 
+    .main-content-top-left
+      %p.main-content-top__group group1
+      %ul.main-content-top__memberlist Member :
+      %li.main-content-top__members me
+    .main-content-top-edit Edit
+
+  .main-content-middle
+    .main-content-middle__message
+      -#下記は部分テンプレート使用可
+      .main-content-middle__message__info
+        %p.main-content-middle__message__info__name person1
+        %p.main-content-middle__message__info__date 2019/1/1
+      .main-content-middle__message__text abc
+      .main-content-middle__message__info
+        %p.main-content-middle__message__info__name person２
+        %p.main-content-middle__message__info__date 2019/1/1
+      .main-content-middle__message__text abcde
+
+
+  .main-content-form
+    %form.new-message{method: "post"}
+      .new-message-box
+        %input.new-message-box-type{placeholder: "type a message", type: "text"}
+        %lageb.new-message-box-type__image
+          %i.fa.fa-image
+      %input.new-message-box-send{type: "submit", value: "Send"}
+
+
+
