@@ -10,15 +10,15 @@
     height: 100px;
     background-color: #253141;
     padding: 0 20px;
-    .left-side-top-box{
+    &__box{
       color: white;
       font-size: 16px;
       font-weight: bold;
       padding-top: 40px;
-      .left-side-top__box__name{
+      &__name{
         float: left;
       }
-      .left-side-top__box__menu{
+      &__menu{
         float:right;
         .left-side-top__box__newgroup{
           float:left;
@@ -33,14 +33,14 @@
   .left-side-main{
     padding: 20px;
     overflow: scroll;
-    .left-side-main__group{
+    &__group{
       padding-bottom: 40px;
-      .left-side-main__group__name{
+      &__name{
         color: $white;
         font-size: 15px;
         font-weight: bold;
       }
-      .left-side-main__group__comment{
+      &__comment{
         padding-top: 5px;
         color: $white;
         font-size: 11px;
@@ -56,7 +56,6 @@
   height:100vh;
   .main-content-top{
     padding:0 40px;
-    // width: 100%;
     height: 100px;
     background-color: $white;
     border-bottom: solid 1px #eeeeee;
@@ -92,21 +91,21 @@
   .main-content-middle{
     padding: 46px 40px 90px 40px;
     overflow: scroll;
-    .main-content-middle__message{
-      .main-content-middle__message__info{
-        .main-content-middle__message__info__name{
+    &__message{
+      &__info{
+        &__name{
           font-size: 16px;
           float:left;
           font-weight: bold;
           color: #434A54;
         }
-        .main-content-middle__message__info__date{
+        &__date{
           color: #999999;
           font-size: 12px;
           padding-bottom:10px;
         }
       }
-      .main-content-middle__message__text{
+      &__text{
         font-size:14px;
         color: #434A54;
         padding-bottom:40px;
