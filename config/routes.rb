@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
-  root 'messages#index'
-  resources :users, only: [:edit, :update]
+  # root 'messages#index'
+  root 'groups#index'
+  resources :users, only: [:index, :edit, :update]
+  resources :groups, only: [:new, :create, :edit, :update] do
+    resources :messages, only: [:index]
+  end
 
 end
