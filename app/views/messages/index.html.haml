@@ -1,25 +1,41 @@
 
-
-.left-side 
+.left-side
   .left-side-top
     .left-side-top__box
-      %p.left-side-top__box__name name
+      %h3.left-side-top__box__name
+        = current_user.name
       %ul.left-side-top__box__menu
-        %li.left-side-top__box__newgroup 
-          %i.fa.fa-edit
+        %li.left-side-top__box__newgroup
+          = link_to new_group_path do
+            = fa_icon 'pencil-square-o', class: 'icon'
         %li.left-side-top__box__edituser
-          %i.fa.fa-cog
+          = link_to edit_user_path(current_user) do
+            = fa_icon 'cog', class: 'icon'
   .left-side-main
-    -# 下記は部分テンプレート使用可
-    .left-side-main__group     
-      %p.left-side-main__group__name group11
-      %p.left-side-main__group__comment comment1
-    .left-side-main__group
-      %p.left-side-main__group__name group22
-      %p.left-side-main__group__comment comment2
-    .left-side-main__group
-      %p.left-side-main__group__name group33
-      %p.left-side-main__group__comment comment3
+    - current_user.groups.each do |group|
+      .left-side-main__group     
+        %p.left-side-main__group__name
+          = group.name 
+        %p.left-side-main__group__comment メッセージはまだありません。
+
+
+-# .left-side 
+-#   .left-side-top
+-#     .left-side-top__box
+-#       %p.left-side-top__box__name name
+-#       %ul.left-side-top__box__menu
+-#         %li.left-side-top__box__newgroup 
+-#           %i.fa.fa-edit
+-#         %li.left-side-top__box__edituser
+-#           %i.fa.fa-cog
+-#   .left-side-main
+-#     -# 下記は部分テンプレート使用可
+-#     - current_user.groups.each do |group|
+-#       .left-side-main__group     
+-#         %p.left-side-main__group__name
+-#           = group.name 
+-#         %p.left-side-main__group__comment comment
+
 
 
 .main-content 
@@ -29,6 +45,7 @@
       %ul.main-content-top__memberlist Member :
       %li.main-content-top__members me
     .main-content-top-edit Edit
+
 
   .main-content-middle
     .main-content-middle__message

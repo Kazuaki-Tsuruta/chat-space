@@ -1,27 +1,70 @@
-.side-bar
-  .header
-    %h3.header__name
-      = current_user.name
-    %ul.header__lists
-      %li.list
-        = link_to do
-          = fa_icon 'pencil-square-o', class: 'icon'
-      %li.list
-        = link_to edit_user_path(current_user) do
-          = fa_icon 'cog', class: 'icon'
-  .groups
-    .group
-      .group__name
-        グループ名
-      .group__message
-        新着メッセージ
-    .group
-      .group__name
-        グループ名
-      .group__message
-        新着メッセージ
-    .group
-      .group__name
-        グループ名
-      .group__message
-        新着メッセージ
+.left-side
+  .left-side-top
+    .left-side-top__box
+      %h3.left-side-top__box__name
+        = current_user.name
+      %ul.left-side-top__box__menu
+        %li.left-side-top__box__newgroup
+          = link_to new_group_path do
+            = fa_icon 'pencil-square-o', class: 'icon'
+        %li.left-side-top__box__edituser
+          = link_to edit_user_path(current_user) do
+            = fa_icon 'cog', class: 'icon'
+  .left-side-main
+    - current_user.groups.each do |group|
+      .left-side-main__group     
+        %p.left-side-main__group__name
+          = group.name 
+        %p.left-side-main__group__comment メッセージはまだありません。
+
+
+
+-# before making render function
+  -# .left-side-main
+  -#   .left-side-main__group
+  -#     .left-side-main__group__name
+  -#       グループ名
+  -#     .left-side-main__group__comment
+  -#       新着メッセージ
+  -#   .left-side-main__group
+  -#     .left-side-main__group__name
+  -#       グループ名
+  -#     .left-side-main__group__comment
+  -#       新着メッセージ
+  -#   .left-side-main__group
+  -#     .left-side-main__group__name
+  -#       グループ名
+  -#     .left-side-main__group__comment
+  -#       新着メッセージ
+
+
+
+-# before appling scss with my file that i made in lesson8
+-# descriptio0n below is from caliclum answer
+-# .side-bar
+-#   .header
+-#     %h3.header__name
+-#       = current_user.name
+-#     %ul.header__lists
+-#       %li.list
+-#         = link_to new_group_path do
+-#           = fa_icon 'pencil-square-o', class: 'icon'
+-#       %li.list
+-#         = link_to edit_user_registration_path(current_user) do
+-#           = fa_icon 'cog', class: 'icon'
+-#   .groups
+-#     .group
+-#       .group__name
+-#         グループ名
+-#       .group__message
+-#         新着メッセージ
+-#     .group
+-#       .group__name
+-#         グループ名
+-#       .group__message
+-#         新着メッセージ
+-#     .group
+-#       .group__name
+-#         グループ名
+-#       .group__message
+-#         新着メッセージ
