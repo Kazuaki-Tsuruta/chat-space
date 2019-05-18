@@ -1,22 +1,6 @@
 
-.left-side
-  .left-side-top
-    .left-side-top__box
-      %h3.left-side-top__box__name
-        = current_user.name
-      %ul.left-side-top__box__menu
-        %li.left-side-top__box__newgroup
-          = link_to new_group_path do
-            = fa_icon 'pencil-square-o', class: 'icon'
-        %li.left-side-top__box__edituser
-          = link_to edit_user_path(current_user) do
-            = fa_icon 'cog', class: 'icon'
-  .left-side-main
-    - current_user.groups.each do |group|
-      .left-side-main__group     
-        %p.left-side-main__group__name
-          = group.name 
-        %p.left-side-main__group__comment メッセージはまだありません。
+.left-side 
+  = render 'devise/shared/side_bar'
 
 
 -# .left-side 
@@ -43,30 +27,44 @@
     .main-content-top-left
       %p.main-content-top__group group1
       %ul.main-content-top__memberlist Member :
-      %li.main-content-top__members me
+      %li.main-content-top__members
+        - @users.each do |user|
+          = "#{user.name} / "
     .main-content-top-edit Edit
 
 
   .main-content-middle
     .main-content-middle__message
       -#下記は部分テンプレート使用可
-      .main-content-middle__message__info
-        %p.main-content-middle__message__info__name person1
-        %p.main-content-middle__message__info__date 2019/1/1
-      .main-content-middle__message__text abc
-      .main-content-middle__message__info
-        %p.main-content-middle__message__info__name person２
-        %p.main-content-middle__message__info__date 2019/1/1
-      .main-content-middle__message__text abcde
+      = render @messages
+
+
+  -# .main-content-form
+  -#   %form.new-message{method: "post"}
+  -#     .new-message-box
+  -#       %input.new-message-box-type{placeholder: "type a message", type: "text"}
+  -#       %lageb.new-message-box-type__image
+  -#         %i.fa.fa-image
+  -#     %input.new-message-box-send{type: "submit", value: "Send"}
 
 
   .main-content-form
-    %form.new-message{method: "post"}
-      .new-message-box
-        %input.new-message-box-type{placeholder: "type a message", type: "text"}
-        %lageb.new-message-box-type__image
-          %i.fa.fa-image
-      %input.new-message-box-send{type: "submit", value: "Send"}
+    = form_for [@group, @message] do |f|
+      .new-message
+        .new-message-box
+          = f.text_field :content, class: 'new-message-box-type', placeholder: 'type a message'
+          .new-message-box-type__image
+            = f.label :image, class: '.new-message-box-type__image' do
+              = fa_icon 'picture-o', class: 'icon'
+              = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'new-message-box-send'
 
 
-
+  -# .form
+  -#   = form_for [@group, @message] do |f|
+  -#     = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+  -#     .form__mask
+  -#       = f.label :image, class: 'form__mask__image' do
+  -#         = fa_icon 'picture-o', class: 'icon'
+  -#         = f.file_field :image, class: 'hidden'
+  -#     = f.submit 'Send', class: 'form__submit'
