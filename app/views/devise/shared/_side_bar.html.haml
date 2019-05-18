@@ -15,7 +15,8 @@
       .left-side-main__group     
         %p.left-side-main__group__name
           = group.name 
-        %p.left-side-main__group__comment メッセージはまだありません。
+        %p.left-side-main__group__comment 
+          = group.show_last_message
 
 
 

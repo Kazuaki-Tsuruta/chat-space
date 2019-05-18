@@ -30,12 +30,12 @@ ActiveRecord::Schema.define(version: 20190517084555) do
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "content"
     t.string   "image"
-    t.integer  "groups_id"
-    t.integer  "users_id"
+    t.integer  "group_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["groups_id"], name: "index_messages_on_groups_id", using: :btree
-    t.index ["users_id"], name: "index_messages_on_users_id", using: :btree
+    t.index ["group_id"], name: "index_messages_on_group_id", using: :btree
+    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -54,6 +54,6 @@ ActiveRecord::Schema.define(version: 20190517084555) do
 
   add_foreign_key "group_users", "groups"
   add_foreign_key "group_users", "users"
-  add_foreign_key "messages", "groups", column: "groups_id"
-  add_foreign_key "messages", "users", column: "users_id"
+  add_foreign_key "messages", "groups"
+  add_foreign_key "messages", "users"
 end
