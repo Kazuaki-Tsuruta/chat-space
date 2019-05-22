@@ -42,18 +42,22 @@
     padding-top: 120px;
     height: calc(100vh - 100px);
     overflow: scroll;
+    text-decoration: none;
     &__group{
       padding-bottom: 40px;
+      text-decoration: none;
       &__name{
         color: $white;
         font-size: 15px;
         font-weight: bold;
+        text-decoration: none;
       }
       &__comment{
         padding-top: 5px;
         color: $white;
         font-size: 11px;
         font-weight: bold;
+        text-decoration: none;
       }
     }
   }
@@ -64,9 +68,10 @@
   background-color: #fafafa;
   height:100vh;
   .main-content-top{
-    padding:0 40px;
+    padding-left:40px;
+    padding-right:40px;
     height: 100px;
-    width: calc(100vw - 300px);
+    width: calc(100% - 380px);
     background-color: $white;
     border-bottom: solid 1px #eeeeee;
     position: fixed;
@@ -100,7 +105,7 @@
     }
   }
   .main-content-middle{
-    padding: 46px 40px 90px 40px;
+    padding: 146px 40px 90px 40px;
     overflow: scroll;
     background-color: #fafafa;
     &__message{
