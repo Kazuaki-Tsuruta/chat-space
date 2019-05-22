@@ -25,12 +25,15 @@
 .main-content 
   .main-content-top 
     .main-content-top-left
-      %p.main-content-top__group group1
+      %p.main-content-top__group 
+        = @group.name
       %ul.main-content-top__memberlist Member :
       %li.main-content-top__members
         - @users.each do |user|
-          = "#{user.name} / "
-    .main-content-top-edit Edit
+          = user.name 
+    .main-content-top-edit 
+      = link_to "Edit", "/groups/#{@group.id}/edit"
+    
 
 
   .main-content-middle
