@@ -38,17 +38,8 @@
 
   .main-content-middle
     .main-content-middle__message
-      -#下記は部分テンプレート使用可
       = render @messages
 
-
-  -# .main-content-form
-  -#   %form.new-message{method: "post"}
-  -#     .new-message-box
-  -#       %input.new-message-box-type{placeholder: "type a message", type: "text"}
-  -#       %lageb.new-message-box-type__image
-  -#         %i.fa.fa-image
-  -#     %input.new-message-box-send{type: "submit", value: "Send"}
 
 
   .main-content-form
@@ -62,12 +53,3 @@
               = f.file_field :image, class: 'hidden'
         = f.submit 'Send', class: 'new-message-box-send'
 
-
-  -# .form
-  -#   = form_for [@group, @message] do |f|
-  -#     = f.text_field :content, class: 'form__message', placeholder: 'type a message'
-  -#     .form__mask
-  -#       = f.label :image, class: 'form__mask__image' do
-  -#         = fa_icon 'picture-o', class: 'icon'
-  -#         = f.file_field :image, class: 'hidden'
-  -#     = f.submit 'Send', class: 'form__submit'
