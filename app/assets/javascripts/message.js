@@ -1,46 +1,22 @@
 $(function() {
   function buildHTML(message){
-    if (message.text != null && message.image.url == null){
-      var html = `<div class="main-content-middle__message__info">
-                    <p class="main-content-middle__message__info__name">
-                      ${message.user_name}
-                    </p>
-                    <p class="main-content-middle__message__info__date">
-                      ${message.created_at}
-                    </p>
-                  </div>
-                  <div class="main-content-middle__message__text">
-                    ${message.text}
-                  </div>`
-    } else if (message.text == null && message.image.url != null) {
-      var html = `<div class="main-content-middle__message__info">
-                    <p class="main-content-middle__message__info__name">
-                      ${message.user_name}
-                    </p>
-                    <p class="main-content-middle__message__info__date">
-                      ${message.created_at}
-                    </p>
-                  </div>
-                  <div class="main-content-middle__message__text">
-                    <img class: "lower-message__image" src = "${message.image.url}" >
-                  </div>`
-    } else {
-      var html = `<div class="main-content-middle__message__info">
-                    <p class="main-content-middle__message__info__name">
-                      ${message.user_name}
-                    </p>
-                    <p class="main-content-middle__message__info__date">
-                      ${message.created_at}
-                    </p>
-                  </div>
-                  <div class="main-content-middle__message__text">
-                    ${message.text}
-                  </div>
-                  <div class="main-content-middle__message__text">
-                    <img class: "lower-message__image" src = "${message.image.url}" >
-                  </div>`
-    }
-    return html;
+    var text = message.text ? `${ message.text }` : "";
+    var image = message.image ? `<img src= ${ message.image }>` : "";
+    var html = `<div class="main-content-middle__message__info">
+                  <p class="main-content-middle__message__info__name">
+                    ${message.user_name}
+                  </p>
+                  <p class="main-content-middle__message__info__date">
+                    ${message.created_at}
+                  </p>
+                </div>
+                <div class="main-content-middle__message__text">
+                  ${text}
+                </div>
+                <div class="main-content-middle__message__text">
+                  ${image}
+                </div>`
+  return html;
   }
 
   $("#new_message").submit(function(e) {
