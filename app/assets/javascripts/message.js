@@ -34,7 +34,7 @@ $(function() {
     .done(function(data) {
       var html = buildHTML(data);
       $('.main-content-middle__message').append(html)
-      $('.new-message-box-type').val('')
+      $('.new_message')[0].reset();
       $(".new-message-box-send").removeAttr("disabled")
       $('html,body').animate({ scrollTop: $(document).height() }, 1000);
     })
