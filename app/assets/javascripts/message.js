@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load', function() {
   function buildHTML(message){
     var text = message.text ? `${ message.text }` : "";
     var image = message.image ? `<img src= ${ message.image }>` : "";
@@ -45,3 +45,6 @@ $(function() {
   });
   $('html,body').animate({ scrollTop: $(document).height() }, 1000);
 });
+
+
+
