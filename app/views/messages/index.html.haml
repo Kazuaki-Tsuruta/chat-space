@@ -2,26 +2,6 @@
 .left-side 
   = render 'devise/shared/side_bar'
 
-
--# .left-side 
--#   .left-side-top
--#     .left-side-top__box
--#       %p.left-side-top__box__name name
--#       %ul.left-side-top__box__menu
--#         %li.left-side-top__box__newgroup 
--#           %i.fa.fa-edit
--#         %li.left-side-top__box__edituser
--#           %i.fa.fa-cog
--#   .left-side-main
--#     -# 下記は部分テンプレート使用可
--#     - current_user.groups.each do |group|
--#       .left-side-main__group     
--#         %p.left-side-main__group__name
--#           = group.name 
--#         %p.left-side-main__group__comment comment
-
-
-
 .main-content 
   .main-content-top 
     .main-content-top-left
@@ -34,13 +14,9 @@
     .main-content-top-edit 
       = link_to "Edit", "/groups/#{@group.id}/edit"
     
-
-
   .main-content-middle
     .main-content-middle__message
       = render @messages
-
-
 
   .main-content-form
     = form_for [@group, @message] do |f|
@@ -52,4 +28,3 @@
               = fa_icon 'picture-o', class: 'icon'
               = f.file_field :image, class: 'hidden'
         = f.submit 'Send', class: 'new-message-box-send'
-
