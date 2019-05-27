@@ -1,5 +1,5 @@
 class Api::MessagesController < ApplicationController
-  before_action :set_info only: [:index]
+  before_action :set_info, only: :index
   
   def index
     respond_to do |format| 
