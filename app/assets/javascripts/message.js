@@ -2,19 +2,21 @@ $(document).on('turbolinks:load', function() {
   function buildHTML(message){
     var text = message.text ? `${ message.text }` : "";
     var image = message.image ? `<img src= ${ message.image }>` : "";
-    var html = `<div class="main-content-middle__message__info">
-                  <p class="main-content-middle__message__info__name">
-                    ${message.user_name}
-                  </p>
-                  <p class="main-content-middle__message__info__date">
-                    ${message.created_at}
-                  </p>
-                </div>
-                <div class="main-content-middle__message__text">
-                  ${text}
-                </div>
-                <div class="main-content-middle__message__text">
-                  ${image}
+    var html = `<div class = message data-id = ${ message.id }
+                  <div class="main-content-middle__message__info">
+                    <p class="main-content-middle__message__info__name">
+                      ${message.user_name}
+                    </p>
+                    <p class="main-content-middle__message__info__date">
+                      ${message.created_at}
+                    </p>
+                  </div>
+                  <div class="main-content-middle__message__text">
+                    ${text}
+                  </div>
+                  <div class="main-content-middle__message__text">
+                    ${image}
+                  </div>
                 </div>`
   return html;
   }
@@ -44,4 +46,26 @@ $(document).on('turbolinks:load', function() {
     })
   });
   $('html,body').animate({ scrollTop: $(document).height() }, 1000);
+
+  var reloadMessages = function() {
+    var last_message_id = $(".message:last").data("id");
+    $.ajax({
+      url: "./api/messages",
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages) {
+      var insertHTML = ''
+      messages.forEach(function(message){
+        insertHTML += buildHTML(message)
+        $('.main-content-middle__message').append(insertHTML)
+        $('html,body').animate({ scrollTop: $(document).height() }, 1000);
+      })
+    })
+    .fail(function() {
+      alert('error');
+    });
+  };
+  setInterval(reloadMessages, 5000);
 });

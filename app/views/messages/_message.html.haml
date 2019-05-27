@@ -1,9 +1,10 @@
-.main-content-middle__message__info
-  %p.main-content-middle__message__info__name
-    = message.user.name
-  %p.main-content-middle__message__info__date
-    = message.created_at.strftime("%Y/%m/%d %H:%M")
-%p.main-content-middle__message__text
-  - if message.content.present?
-    = message.content
-= image_tag message.image.url, class: 'lower-message__image' if message.image.present?
+.message{'data-id': message.id}
+  .main-content-middle__message__info
+    %p#message-name.main-content-middle__message__info__name
+      = message.user.name
+    %p.main-content-middle__message__info__date
+      = message.created_at.strftime("%Y/%m/%d %H:%M")
+  %p.main-content-middle__message__text
+    - if message.content.present?
+      = message.content
+  = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
