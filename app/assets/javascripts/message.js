@@ -48,24 +48,27 @@ $(document).on('turbolinks:load', function() {
   $('html,body').animate({ scrollTop: $(document).height() }, 1000);
 
   var reloadMessages = function() {
-    var last_message_id = $(".message:last").data("id");
-    $.ajax({
-      url: "./api/messages",
-      type: 'get',
-      dataType: 'json',
-      data: {id: last_message_id}
-    })
-    .done(function(messages) {
-      var insertHTML = ''
-      messages.forEach(function(message){
-        insertHTML += buildHTML(message)
-        $('.main-content-middle__message').append(insertHTML)
-        $('html,body').animate({ scrollTop: $(document).height() }, 1000);
+    if(document.URL.match("messages")) {
+      var last_message_id = $(".message:last").data("id");
+      $.ajax({
+        url: "./api/messages",
+        type: 'get',
+        dataType: 'json',
+        data: {id: last_message_id}
       })
-    })
-    .fail(function() {
-      alert('error');
-    });
-  };
+      .done(function(messages) {
+        console.log("アイウエオ")
+        var insertHTML = ''
+        messages.forEach(function(message){
+          insertHTML += buildHTML(message)
+          $('.main-content-middle__message').append(insertHTML)
+          $('html,body').animate({ scrollTop: $(document).height() }, 1000);
+        })
+      })
+      .fail(function() {
+        alert('error');
+      })
+    }
+  }
   setInterval(reloadMessages, 5000);
 });
